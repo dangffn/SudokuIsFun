@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Display Settings">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_highlightNumbers"
+            android:summary="Highlight all cells that have the same value as the selected cell"
+            android:title="Highlight Like Numbers" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_highlightNeighbors"
+            android:summary="Highlight selected row, column and 3x3 block"
+            android:title="Highlight Neighbor Cells" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_updatePossibilities"
+            android:summary="When a value is entered in a cell, automatically remove that possibility from the cell's neighbors"
+            android:title="Update Neighbor Possibilities" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_showConflicts"
+            android:summary="Show conflicting cell values in the puzzle"
+            android:title="Show Cell Conflicts" />
+
+        <ListPreference
+            android:defaultValue="@string/pref_key_characterUnitDigits"
+            android:entries="@array/characterUnits"
+            android:entryValues="@array/characterUnitsValues"
+            android:key="@string/pref_key_characterUnit"
+            android:summary="@string/pref_characterUnit_Summary"
+            android:title="Character Unit"/>
+
+        <ListPreference
+            android:defaultValue="@string/pref_key_keyboardSizeSmall"
+            android:entries="@array/keyboardSizes"
+            android:entryValues="@array/keyboardSizesValues"
+            android:key="@string/pref_key_keyboardSize"
+            android:summary="@string/pref_keyboardSize_summary"
+            android:title="Keyboard Size"/>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="Gameplay">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_hideAssistanceOptions"
+            android:summary="@string/pref_hideAssistance_Summary"
+            android:title="@string/pref_hideAssistance_Title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_autoSave"
+            android:summary="Automatically save your progress while playing"
+            android:title="Auto Save Game" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Data">
+
+        <Preference
+            android:key="@string/pref_key_restorePuzzles"
+            android:summary="Restore all of the default puzzles that came with the app, this will not affect any puzzles that were created"
+            android:title="Restore Default Puzzles" />
+
+        <Preference
+            android:key="@string/pref_key_wipeStats"
+            android:summary="Delete all the statistics"
+            android:title="Clear Statistics" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_useDefaultPuzzleIcon"
+            android:summary="Save some storage space by not saving puzzle thumbnails"
+            android:title="Don't Save Puzzle Thumbnails" />
+
+        <Preference
+            android:key="@string/pref_key_trainOcr"
+            android:summary="Train OCR to recognize digits more efficiently"
+            android:title="Train OCR" />
+
+        <Preference
+            android:key="@string/pref_key_deleteOcr"
+            android:summary="Delete the data for digit recognition"
+            android:title="Clear OCR Data" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

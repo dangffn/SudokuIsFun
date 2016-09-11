@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.danbuntu.sudokuisfun.ui.RainingNumbers
+        android:id="@+id/rainingNumbers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/btnStartSudoku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:onClick="startNewGameActivity"
+            android:text="@string/button_newGame"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnLoadLastGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:onClick="loadLastGame"
+            android:text="@string/button_resumeGame"
+            android:visibility="invisible"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/btnLoadStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:onClick="startStatisticsActivity"
+            android:text="@string/button_statistics"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:onClick="startSettingsActivity"
+            android:text="@string/button_settings"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

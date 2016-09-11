@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_cab_good"
+        android:title="@string/menu_good"
+        android:icon="@drawable/ic_check_mark"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_cab_bad"
+        android:title="@string/menu_bad"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_cab_obfuscate"
+        android:title="@string/menu_randomizeThisPuzzle"
+        android:icon="@android:drawable/ic_media_play"
+        app:showAsAction="never"/>
+
+</menu>

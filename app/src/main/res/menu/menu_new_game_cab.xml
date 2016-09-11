@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_cab_delete"
+        android:title="@string/menu_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_cab_rename"
+        android:title="@string/menu_rename"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/menu_cab_changeCategory"
+        android:title="@string/menu_changeCategory"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_cab_deleteSave"
+        android:title="@string/menu_deleteSave"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_cab_puzzleInfo"
+        android:title="@string/menu_puzzleInfo"
+        android:icon="@android:drawable/ic_dialog_info"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_cab_cancel"
+        android:title="@string/menu_cancel"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        app:showAsAction="always"/>
+
+</menu>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.danbuntu.sudokuisfun">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.Actionbar"
+        android:backupAgent=".utils.ThisBackupAgent">
+
+        <meta-data android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAIAUSG4rzJZqIBCkhUYrz4LlQ1JDKDw8Fpv9fOvw" />
+
+        <activity android:name=".ui.MainMenuActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.HomeScreen.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.PuzzleActivity"
+            android:label="@string/activity_label_puzzle"/>
+        <activity android:name=".ui.StatisticsActivity"
+            android:label="@string/activity_label_statistics"/>
+        <activity android:name=".ui.CameraActivity"
+            android:label="@string/activity_label_camera"
+            android:theme="@style/AppTheme.Camera.NoActionbar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.OCRActivity"
+            android:label="@string/activity_label_ocrTrainer"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.GalleryActivity"
+            android:label="@string/activity_label_gallery"
+            android:theme="@style/AppTheme.NoActionbar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SettingsActivity"
+            android:label="@string/activity_label_settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainMenuActivity" />
+        </activity>
+        <activity android:name=".ui.NewGameActivity"
+            android:label="@string/activity_label_newGame" />
+
+    </application>
+
+</manifest>
