@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#367de1</color>
+
+    <color name="cellHighlighted">#eac808</color>
+    <color name="cellLocked">#c6c6c6</color>
+    <color name="cellSelected">#008ac1</color>
+    <color name="cellPressed">#029f26</color>
+
+    <color name="thinGridLine">#333333</color>
+    <color name="thickGridLine">#101010</color>
+
+    <color name="semiTransparent">#99000000</color>
+    <color name="semiTransparentBlue">#b94c55ff</color>
+    <color name="grayOverlayBackground">#508f9b</color>
+
+    <color name="gridPossibilityTextColor">#c70007</color>
+    <color name="gridValueTextColor">#000000</color>
+
+    <color name="keyBackGround_Normal">#77cfd2</color>
+    <color name="keyBackGround_Pressed">#038084</color>
+    <color name="keyBackGround_Disabled">#434f50</color>
+
+    <color name="light_blue">#c800a2a7</color>
+    <color name="white">#ffffff</color>
+</resources>

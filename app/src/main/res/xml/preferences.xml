@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Display Settings">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_highlight_numbers"
+            android:summary="Highlight like numbers in the sudoku grid"
+            android:title="Highlight Like Numbers" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_highlight_neighbors"
+            android:summary="Highlight neighboring cells"
+            android:title="Highlight Neighbor Cells" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_update_possibilities"
+            android:summary="Update neighbor possibilities when you set the value of a tile"
+            android:title="Update Neighbor Possibilities" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Auto Save">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_auto_save"
+            android:summary="Automatically save your progress while in a game"
+            android:title="Auto Save Game" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Data">
+
+        <Preference
+            android:key="@string/pref_train_ocr"
+            android:summary="Train OCR to recognize digits more efficiently"
+            android:title="Train OCR" />
+
+        <Preference
+            android:key="@string/pref_clear_ocr"
+            android:summary="There is no data"
+            android:title="Clear OCR Data" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

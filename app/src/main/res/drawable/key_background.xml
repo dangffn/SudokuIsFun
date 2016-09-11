@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle">
+
+            <corners android:radius="4dp"/>
+            <padding android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp"/>
+            <solid android:color="@color/keyBackGround_Normal"/>
+            <stroke android:color="#000000" android:width="2dp"/>
+
+        </shape>
+    </item>
+
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle">
+
+            <corners android:radius="4dp"/>
+            <padding android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp"/>
+            <solid android:color="@color/keyBackGround_Pressed"/>
+            <stroke android:color="#2e2e2e" android:width="2dp"/>
+
+        </shape>
+    </item>
+
+</selector>

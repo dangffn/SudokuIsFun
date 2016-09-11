@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.danbuntu.androidsudoku.RainingNumbers
+        android:id="@+id/rainingNumbers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/btnStartSudoku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/key_background"
+            android:onClick="startNewGameActivity"
+            android:text="@string/button_new_game"
+            android:visibility="invisible"
+            android:layout_margin="5dp"
+            android:padding="5dp"/>
+
+        <Button
+            android:id="@+id/btnLoadLastGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/key_background"
+            android:onClick="loadLastGame"
+            android:text="@string/button_last_game"
+            android:visibility="invisible"
+            android:layout_margin="5dp"
+            android:enabled="false"
+            android:padding="5dp"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/key_background"
+            android:onClick="startSettingsActivity"
+            android:text="@string/button_settings"
+            android:visibility="invisible"
+            android:layout_margin="5dp"
+            android:padding="5dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

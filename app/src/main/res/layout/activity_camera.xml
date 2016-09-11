@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/KeyBoardTheme.Row">
+    
+    <com.danbuntu.androidsudoku.CameraView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/cameraView"/>
+
+    <com.danbuntu.androidsudoku.Overlay
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/overlay"
+        android:clickable="false"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTakePicture"
+        android:layout_gravity="bottom|center_horizontal"
+        android:src="@android:drawable/ic_menu_camera"
+        android:background="@drawable/camera_button_background"
+        android:text="Take Picture"
+        android:onClick="onCaptureClick"
+        android:padding="15dp"
+        android:enabled="false"
+        android:clickable="false"
+        android:layout_margin="10dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnChooseFromGallery"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:background="@android:color/transparent"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="10dp"/>
+    
+
+</FrameLayout>
