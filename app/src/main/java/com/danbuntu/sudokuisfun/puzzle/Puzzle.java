@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 
 import com.danbuntu.sudokuisfun.ui.SudokuGridView;
 import com.danbuntu.sudokuisfun.utils.SudokuUtils;
@@ -83,8 +82,8 @@ public class Puzzle {
                         mSoftBackup = null;
                         mHardBackup = null;
                         if (mGuesses > -1)
-                            Log.i("Puzzle", "Puzzle was solved with " + mGuesses + " guesses made");
-                        break;
+                            //Log.i("Puzzle", "Puzzle was solved with " + mGuesses + " guesses made");
+                            break;
                     case (IMPOSSIBLE):
                         listener.puzzleImpossible();
                         listener.puzzleSolveEnded();
@@ -114,16 +113,16 @@ public class Puzzle {
         List<Integer> random = Arrays.asList(digits);
         Collections.shuffle(random);
 
-        for(int y=0; y<array.length; y++) {
-            for(int x=0; x<array[0].length; x++) {
+        for (int y = 0; y < array.length; y++) {
+            for (int x = 0; x < array[0].length; x++) {
                 int index = array[y][x].getValue() % random.size();
-                if(array[y][x].getValue() != Cell.NONE) {
+                if (array[y][x].getValue() != Cell.NONE) {
                     boolean locked = array[y][x].isLocked();
                     array[y][x].setValue(random.get(index), true);
                     array[y][x].setLocked(locked);
                 } else {
                     ArrayList<Integer> substitutedPossibilities = new ArrayList<>();
-                    for(int i : array[y][x].getPossibilities())
+                    for (int i : array[y][x].getPossibilities())
                         substitutedPossibilities.add(random.get(i % random.size()));
                     array[y][x].clear();
                     array[y][x].setPossibilities(substitutedPossibilities);
@@ -265,7 +264,7 @@ public class Puzzle {
         updateAllCellPossibilities();
 
         boolean updated = true;
-        while (updated && mSolvedCells < GridSpecs.ROWS * GridSpecs.COLS) {
+        while (updated && mSolvedCells < GridSpecs.ROWS * GridSpecs.COLS && isSolving.get()) {
 
             updated = false;
             int value;
@@ -288,7 +287,7 @@ public class Puzzle {
                         updated = true;
 
                     } else if (cell.getPossibilities().size() == 0) {
-                        Log.i("SUDOKU", "Attempted solve resulted in IMPOSSIBLE at " + cell.getIndex() + " with possibilities " + cell.getPossibilities().toString());
+                        //Log.i("SUDOKU", "Attempted solve resulted in IMPOSSIBLE at " + cell.getIndex() + " with possibilities " + cell.getPossibilities().toString());
                         return IMPOSSIBLE;
                     }
                 }
@@ -296,10 +295,10 @@ public class Puzzle {
         }
 
         if (mSolvedCells == GridSpecs.ROWS * GridSpecs.COLS) {
-            Log.i("SUDOKU", "Attempted solve resulted in SOLVED");
+            //Log.i("SUDOKU", "Attempted solve resulted in SOLVED");
             return SOLVED;
         } else {
-            Log.i("SUDOKU", "Attempted solve resulted in UNSOLVED");
+            //Log.i("SUDOKU", "Attempted solve resulted in UNSOLVED");
             return UNSOLVED;
         }
     }
@@ -311,7 +310,7 @@ public class Puzzle {
         int n;
 
         boolean updated = true;
-        while (updated && mSolvedCells < GridSpecs.ROWS * GridSpecs.COLS) {
+        while (updated && mSolvedCells < GridSpecs.ROWS * GridSpecs.COLS && isSolving.get()) {
 
             updated = false;
 
@@ -348,10 +347,10 @@ public class Puzzle {
         }
 
         if (mSolvedCells == GridSpecs.ROWS * GridSpecs.COLS) {
-            Log.i("SUDOKU", "Attempted solve resulted in SOLVED");
+            //Log.i("SUDOKU", "Attempted solve resulted in SOLVED");
             return SOLVED;
         } else {
-            Log.i("SUDOKU", "Attempted solve resulted in UNSOLVED");
+            //Log.i("SUDOKU", "Attempted solve resulted in UNSOLVED");
             for (Cell c : mCells)
                 if (c.notSet() && c.getPossibilities().size() == 0) return IMPOSSIBLE;
             return UNSOLVED;
@@ -446,7 +445,7 @@ public class Puzzle {
         float total = (bR + gR + pR);
         float adjustedTotal = total * spectrum;
 
-        Log.i("PUZZLE", "The difficulty for this puzzle is: " + total);
+        //Log.i("PUZZLE", "The difficulty for this puzzle is: " + total);
 
         return (int) adjustedTotal + min;
     }
@@ -459,7 +458,7 @@ public class Puzzle {
                 userEdited++;
             }
         }
-        Log.i("SUDOKU", "Removed " + userEdited + " user edits and restarted the queue");
+        //Log.i("SUDOKU", "Removed " + userEdited + " user edits and restarted the queue");
     }
 
     public void doSolve() {
@@ -522,7 +521,7 @@ public class Puzzle {
 
                     }
 
-                    Log.i("SUDOKU", "Trying branch at " + stack.get(stack.size() - 1).n + " with " + stack.get(stack.size() - 1).first());
+                    //Log.i("SUDOKU", "Trying branch at " + stack.get(stack.size() - 1).n + " with " + stack.get(stack.size() - 1).first());
 
                     int result = (analytic) ? analyticSolve() : quickSolve();
 
@@ -551,7 +550,7 @@ public class Puzzle {
                                 newBranch.setBotCount(mBottlenecks);
                                 newBranch.setScaCount(mSolveScans);
                                 stack.add(newBranch);
-                                Log.i("SUDOKU", "Creating branch at " + cell.getIndex() + " for " + cell.getPossibilities().toString());
+                                //Log.i("SUDOKU", "Creating branch at " + cell.getIndex() + " for " + cell.getPossibilities().toString());
                                 break;
                             }
                         }
@@ -559,6 +558,9 @@ public class Puzzle {
                     } else if (result == IMPOSSIBLE) {
 
                         while (stack.size() != 0 && stack.get(stack.size() - 1).list.size() <= 1) {
+                            if (!isSolving.get())
+                                return;
+
                             if (stack.size() > 0) {
                                 Branch lastBranch = stack.remove(stack.size() - 1);
                                 mPosReductions = lastBranch.posCount;
@@ -571,7 +573,7 @@ public class Puzzle {
                                 mBottlenecks = 0;
                                 mSolveScans = 0;
                             }
-                            Log.i("SUDOKU", "Backtracking...");
+                            //Log.i("SUDOKU", "Backtracking...");
 
                         }
 
@@ -587,7 +589,7 @@ public class Puzzle {
                             }
 
                             // stack is empty and user changes were already removed, this puzzle is completely impossible
-                            Log.i("SUDOKU", "Queue empty, this puzzle is impossible");
+                            //Log.i("SUDOKU", "Queue empty, this puzzle is impossible");
                             handler.sendEmptyMessage(IMPOSSIBLE);
                             incrementRev();
                             isSolving.set(false);
@@ -613,11 +615,31 @@ public class Puzzle {
 
         solveThread.start();
 
-        if(waitForFinish) {
+        if (waitForFinish) {
             try {
                 solveThread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                isSolving.set(false);
+            }
+        }
+    }
+
+    public boolean isSolving() {
+        return isSolving.get();
+    }
+
+    public void cancelSolving() {
+        if (solveThread != null) {
+            try {
+                isSolving.set(false);
+                solveThread.interrupt();
+                solveThread.join();
+
+            } catch(InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                solveThread = null;
             }
         }
     }
@@ -724,7 +746,7 @@ public class Puzzle {
             if (!checkCellNeighborValidity(checkCell, queue, checked, markErrors)) valid = false;
         }
 
-        Log.i("PUZZLE", "Puzzle valid: " + valid);
+        //Log.i("PUZZLE", "Puzzle valid: " + valid);
 
         return valid;
 
@@ -850,7 +872,7 @@ public class Puzzle {
                 handler.sendEmptyMessage(RESUMED);
             }
         }
-//        Log.i("PUZZLE", "Current solved cells: " + mSolvedCells);
+//        //Log.i("PUZZLE", "Current solved cells: " + mSolvedCells);
     }
 
     public void onCellValueSet(boolean set) {
@@ -867,7 +889,7 @@ public class Puzzle {
             }
             mSolvedCells--;
         }
-//        Log.i("PUZZLE", "Current solved cells: " + mSolvedCells);
+//        //Log.i("PUZZLE", "Current solved cells: " + mSolvedCells);
     }
 
     public int getSolvedCount() {
@@ -1030,12 +1052,12 @@ public class Puzzle {
         if (showConflicts) {
             for (Cell cell : toScan) {
                 // these cells' values were just reverted, scan them to find conflicts
-                Log.i("Revert", "Checking cell: " + cell.getIndex() + " showConflicts: " + showConflicts);
+                //Log.i("Revert", "Checking cell: " + cell.getIndex() + " showConflicts: " + showConflicts);
                 checkIndividualCellValidity(cell, showConflicts);
             }
         }
 
-        Log.i("Puzzle", "Reverted to currentRevision: " + currentRevision);
+        //Log.i("Puzzle", "Reverted to currentRevision: " + currentRevision);
     }
 
     public void setPuzzleListener(PuzzleListener listener) {

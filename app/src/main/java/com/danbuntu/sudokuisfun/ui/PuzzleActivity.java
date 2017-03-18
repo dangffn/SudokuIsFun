@@ -481,6 +481,10 @@ public class PuzzleActivity extends AppCompatActivity implements ActionMode.Call
 
         puzzleTimer.onPause();
 
+        if(puzzle.isSolving()) {
+            puzzle.cancelSolving();
+        }
+
         // don't save if:
         //   1. the preference says not to
         //   2. or we are loading from an image, but the image load wasn't valid
