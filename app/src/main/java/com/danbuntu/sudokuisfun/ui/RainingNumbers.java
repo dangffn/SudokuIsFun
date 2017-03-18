@@ -4,17 +4,16 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PixelFormat;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.danbuntu.sudokuisfun.R;
 
@@ -25,26 +24,25 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Created by Dan on 5/28/2016. Have a great day!
  */
-public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
+public class RainingNumbers extends View implements View.OnTouchListener {
 
     private final int MAX_NUMBERS = 50;
     private final long touchDelay = 100;
 
     private Random rng;
     private Queue<FallingDigit> queue;
-    private boolean created = false;
-    private boolean doRain;
+    private boolean running;
     private Paint textPaint, backgroundPaint;
-    private Thread addNumbers;
-    private GraphicThread update;
+    private Thread addNumbers, update;
     private int dp40, dp20;
     private int cX, cY, radius;
     private int gravity, bgColor;
     private Context context;
     private long lastTouchDown;
-    private RadialGradient gradient;
     private String[] chars;
     private int[] colors;
+    private final static int GRAV_DELAY = 40;
+    private boolean layedOut = false;
 
     public RainingNumbers(Context context) {
         this(context, null);
@@ -58,15 +56,6 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
         super(context, attrs, defStyleAttr);
         this.context = context;
         init();
-    }
-
-    public void stop() {
-        if (update != null) update.stopThread();
-        doRain = false;
-        addNumbers.interrupt();
-
-        update = null;
-        addNumbers = null;
     }
 
     public void setChars(String[] chars) {
@@ -89,6 +78,7 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
 
     private void init() {
         backgroundPaint = new Paint();
+        backgroundPaint.setDither(true);
 
         bgColor = context.getResources().getColor(R.color.palette09);
 
@@ -106,21 +96,61 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
 
         rng = new Random();
 
-        gravity = Math.max(1, (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()) * 0.75));
+        gravity = Math.max(1, (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()) * 0.85));
 
-        getHolder().addCallback(this);
         setOnTouchListener(this);
+    }
 
-        getHolder().setFormat(PixelFormat.RGBA_8888);
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        cX = w / 2;
+        cY = h / 2;
+        radius = Math.max(w, h) / 2;
+
+        backgroundPaint.setShader(new RadialGradient(cX,
+                cY,
+                radius,
+                getResources().getColor(R.color.palette05),
+                getResources().getColor(R.color.palette09),
+                Shader.TileMode.CLAMP));
+
+        layedOut = true;
+
     }
 
     public void start() {
+        if (isRunning()) {
+            Log.e("RainingNumbers", "start() called while already running");
+            return;
+        }
 
+        if(!layedOut) {
+            Log.i("RainingNumbers", "start() called but view is not layed out, adding layout listener");
+            getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    start();
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    } else {
+                        getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    }
+                }
+            });
+            return;
+        }
+
+        running = true;
+
+        Log.i("RainingNumbers", "Creating threads");
         addNumbers = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (doRain) {
-                    if (created && queue.size() < MAX_NUMBERS) {
+                while (isRunning()) {
+                    if (queue.size() < MAX_NUMBERS) {
                         queue.add(new FallingDigit());
                     }
                     try {
@@ -132,18 +162,53 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
             }
         });
 
-        update = new GraphicThread(this);
+        update = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (isRunning()) {
 
-        doRain = true;
+                    applyGravity();
+                    RainingNumbers.this.postInvalidate();
+
+                    try {
+                        Thread.sleep(GRAV_DELAY);
+                    } catch(InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
 
         addNumbers.start();
-        update.startThread();
+        update.start();
+    }
 
+    public void stop() {
+        if(!isRunning()) {
+            Log.e("RainingNumbers", "stop() called while already stopped");
+            return;
+        }
+
+        running = false;
+
+        if(addNumbers != null) {
+            Log.i("RainingNumbers", "Destroying addNumbers thread");
+            addNumbers.interrupt();
+            addNumbers = null;
+        }
+
+        if(update != null) {
+            Log.i("RainingNumbers", "Destroying update thread");
+            update.interrupt();
+            update = null;
+        }
     }
 
     public void applyGravity() {
         for (FallingDigit drop : queue) {
-            if (drop.transparency >= 150 && drop.colorShift > 0) drop.colorShift = -drop.colorShift;
+            if (drop.transparency >= 150 && drop.colorShift > 0) {
+                drop.colorShift = -drop.colorShift;
+            }
             drop.transparency += drop.colorShift;
             drop.y += gravity;
         }
@@ -164,54 +229,27 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
         canvas.drawText(digit.character, digit.x, digit.y, textPaint);
     }
 
+    public boolean isRunning() {
+        return running;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
 
         canvas.drawColor(bgColor);
 
-        if(created) {
+        if(cX > 0 && cY > 0) {
             canvas.drawCircle(cX,
                     cY,
                     radius,
                     backgroundPaint);
+
+            for (FallingDigit drop : queue) {
+                drawDigit(canvas, drop);
+            }
         }
 
-        for (FallingDigit drop : queue) drawDigit(canvas, drop);
-
         super.onDraw(canvas);
-    }
-
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        Log.i("RainingNumbers", "Surface created");
-        created = true;
-
-        cX = getWidth() / 2;
-        cY = getHeight() / 2;
-        radius = Math.max(getWidth(), getHeight()) / 2;
-
-        gradient = new RadialGradient(cX,
-                cY,
-                radius,
-                getResources().getColor(R.color.palette05),
-                getResources().getColor(R.color.palette09),
-                Shader.TileMode.CLAMP);
-
-        backgroundPaint.setShader(gradient);
-        backgroundPaint.setDither(true);
-
-        start();
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.i("RainingNumbers", "Surface Destroyed");
-        created = false;
-        stop();
     }
 
     @Override
@@ -233,7 +271,7 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
     }
 
     private class FallingDigit {
-        int colorShift = 6;
+        int colorShift = 4;
         int x, y, value, transparency, size;
         String character;
 
@@ -257,4 +295,6 @@ public class RainingNumbers extends SurfaceView implements SurfaceHolder.Callbac
             character = (chars != null) ? chars[value] : String.valueOf(value +1);
         }
     }
+
+
 }

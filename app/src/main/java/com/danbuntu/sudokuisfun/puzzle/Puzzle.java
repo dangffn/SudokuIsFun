@@ -756,6 +756,10 @@ public class Puzzle {
         mSolveScans = 0;
     }
 
+    public void loadPuzzleData(String puzzleJson) {
+        loadPuzzleData(puzzleJson, (short) 0);
+    }
+
     public void loadPuzzleData(String puzzleJson, short rev) {
         if (puzzleJson == null) return;
 

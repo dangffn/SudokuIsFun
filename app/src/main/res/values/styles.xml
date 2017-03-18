@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.MenuButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/menu_button_background</item>
+    </style>
+
     <style name="AppTheme.NoActionbar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

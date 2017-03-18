@@ -2,12 +2,14 @@ package com.danbuntu.sudokuisfun.ui;
 
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
@@ -66,13 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
             if (view != null) view.startAnimation(fadeIn);
         }
 
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
+        // set raining numbers to reflect the display settings
         rain.setChars(null);
         rain.setColors(null);
         String characterPreference = PreferenceManager.getDefaultSharedPreferences(this)
@@ -82,6 +78,12 @@ public class MainMenuActivity extends AppCompatActivity {
         } else if (characterPreference != null && characterPreference.equals(getString(R.string.pref_key_characterUnitColors))) {
             rain.setColors(getResources().getIntArray(R.array.colors));
         }
+
+        // start the rain
+        rain.start();
+
+        Log.i("MainMenuActivity", "onStart called");
+        super.onStart();
     }
 
     @Override
@@ -93,6 +95,10 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         if (pm != null) pm.close();
+
+        rain.stop();
+
+        Log.i("MainMenuActivity", "onStop called");
         super.onStop();
     }
 

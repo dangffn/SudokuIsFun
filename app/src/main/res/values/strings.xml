@@ -127,6 +127,7 @@
 
     <string name="message_areYouSure">Are you sure?</string>
     <string name="message_inProgress">%s (In progress)</string>
+    <string name="message_finished">%s (FINISHED)</string>
     <string name="message_areYouSure_deletePuzzles">Are you sure you want to delete these %s puzzles?</string>
     <string name="message_areYouSure_deletePuzzle">Are you sure you want to delete this puzzle?</string>
     <string name="message_areYouSure_deleteSaves">Are you sure you want to delete these game saves?</string>

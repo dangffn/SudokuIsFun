@@ -17,46 +17,58 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_centerInParent="true"
         android:gravity="center"
-        android:layout_centerInParent="true">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnStartSudoku"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
+            android:layout_margin="5dp"
             android:onClick="startNewGameActivity"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="@string/button_newGame"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnLoadLastGame"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
+            android:layout_margin="5dp"
+            android:enabled="false"
             android:onClick="loadLastGame"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="@string/button_resumeGame"
-            android:visibility="invisible"
-            android:enabled="false"/>
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnLoadStatistics"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
+            android:layout_margin="5dp"
             android:onClick="startStatisticsActivity"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="@string/button_statistics"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnSettings"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
+            android:layout_margin="5dp"
             android:onClick="startSettingsActivity"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="@string/button_settings"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
     </LinearLayout>
 

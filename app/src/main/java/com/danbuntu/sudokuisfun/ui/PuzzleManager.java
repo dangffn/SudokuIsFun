@@ -12,6 +12,7 @@ import android.util.Log;
 
 import com.danbuntu.sudokuisfun.R;
 import com.danbuntu.sudokuisfun.puzzle.Cell;
+import com.danbuntu.sudokuisfun.puzzle.Puzzle;
 import com.danbuntu.sudokuisfun.utils.SudokuUtils;
 import com.danbuntu.sudokuisfun.utils.ThisBackupAgent;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
