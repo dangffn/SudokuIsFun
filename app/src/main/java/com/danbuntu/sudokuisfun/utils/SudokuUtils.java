@@ -460,10 +460,6 @@ public class SudokuUtils {
         return imgBytes;
     }
 
-    public static File getExternalOCRFile(Context context) {
-        return new File(context.getFilesDir(), context.getString(R.string.filename_ocr));
-    }
-
     public static void clearAppCache(Context context) {
         boolean clean = true;
         File cacheDir = context.getCacheDir();

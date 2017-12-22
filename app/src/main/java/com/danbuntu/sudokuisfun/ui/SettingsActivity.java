@@ -18,6 +18,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.danbuntu.sudokuisfun.R;
+import com.danbuntu.sudokuisfun.ocr.DataManager;
 import com.danbuntu.sudokuisfun.utils.SudokuUtils;
 import com.danbuntu.sudokuisfun.utils.ThisBackupAgent;
 
@@ -98,7 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public void onResume() {
 
-            final File ocrFile = SudokuUtils.getExternalOCRFile(getActivity());
+            final File ocrFile = DataManager.getExternalDataFile(getActivity());
             final PreferenceManager prefManager = getPreferenceManager();
             final Preference deleteOcr = prefManager.findPreference(getString(R.string.pref_key_deleteOcr));
             final Preference restorePuzzles = prefManager.findPreference(getString(R.string.pref_key_restorePuzzles));
@@ -150,7 +151,7 @@ public class SettingsActivity extends AppCompatActivity {
                                     }
                                     if (deleted) {
                                         Log.i("SettingsActivity", "Successfully deleted ocr training data");
-                                        Toast.makeText(getActivity(), "Deleted OCR training data", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getActivity(), "Deleted ocr training data", Toast.LENGTH_LONG).show();
                                         setPreferenceEnabled(false, deleteOcr, "There is no saved data");
                                         prefManager.getSharedPreferences().edit().putInt(getString(R.string.pref_key_externalSigCount), 0).apply();
                                     } else {

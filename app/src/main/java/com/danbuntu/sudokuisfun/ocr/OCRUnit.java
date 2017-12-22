@@ -15,7 +15,7 @@ import java.util.Queue;
 /**
  * Created by Dan on 5/3/2016. Have a great day!
  */
-public class OCR {
+public class OCRUnit {
 
     final static int optimalSide = 60;
 
@@ -39,7 +39,7 @@ public class OCR {
 
     Bitmap sourceBitmap;
 
-    public OCR(Bitmap inputBitmap) {
+    public OCRUnit(Bitmap inputBitmap) {
         this(inputBitmap, -1);
     }
 
@@ -47,7 +47,7 @@ public class OCR {
      * @param inputBitmap The bitmap to search for a single digit in
      * @param index The index of this image in the grid
      */
-    public OCR(Bitmap inputBitmap, int index) {
+    public OCRUnit(Bitmap inputBitmap, int index) {
         sourceBitmap = inputBitmap;
 
         VALUE = UNRECOGNIZED;
@@ -273,7 +273,7 @@ public class OCR {
      */
     public void resizeToPreferred() {
         if (bitmapIsAlive()) {
-            sourceBitmap = Bitmap.createScaledBitmap(sourceBitmap, OCR.optimalSide, OCR.optimalSide, false);
+            sourceBitmap = Bitmap.createScaledBitmap(sourceBitmap, OCRUnit.optimalSide, OCRUnit.optimalSide, false);
         }
     }
 
@@ -393,14 +393,14 @@ public class OCR {
     }
 
     /**
-     * Prepares the bitmap for OCR scanning, discards loaded bitmap upon completion
+     * Prepares the bitmap for OCRUnit scanning, discards loaded bitmap upon completion
      */
     public void prepare() {
         prepare(false);
     }
 
     /**
-     * Prepares the bitmap for OCR scanning
+     * Prepares the bitmap for OCRUnit scanning
      * @param persist if true, the bitmap will not be recycled after complete
      */
     public void prepare(boolean persist) {

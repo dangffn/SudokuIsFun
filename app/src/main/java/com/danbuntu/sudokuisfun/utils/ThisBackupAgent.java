@@ -8,6 +8,7 @@ import android.app.backup.SharedPreferencesBackupHelper;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
+import com.danbuntu.sudokuisfun.ocr.DataManager;
 import com.danbuntu.sudokuisfun.ui.PuzzleManager;
 
 import java.io.File;
@@ -38,11 +39,11 @@ public class ThisBackupAgent extends BackupAgentHelper {
         String databaseFile = ".." + File.separator + databaseDirName + File.separator + PuzzleManager.DB_NAME;
 
         // takes care of ocrdata-trained
-        File ocrDataFile = SudokuUtils.getExternalOCRFile(this);
+        File ocrDataFile = DataManager.getExternalDataFile(this);
         String externalOcrFile = ocrDataFile.getName();
 
         Log.i("ThisBackupAgent", "Database location recorded as: " + databaseFile);
-        Log.i("ThisBackupAgent", "OCRData location recorded as: " + externalOcrFile);
+        Log.i("ThisBackupAgent", "OCRScanner location recorded as: " + externalOcrFile);
 
         // wrap it all up
         FileBackupHelper fileHelper =

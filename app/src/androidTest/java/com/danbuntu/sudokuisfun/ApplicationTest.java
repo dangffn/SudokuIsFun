@@ -2,13 +2,10 @@ package com.danbuntu.sudokuisfun;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.test.ApplicationTestCase;
 import android.util.Log;
 
-import com.danbuntu.sudokuisfun.ocr.OCRData;
+import com.danbuntu.sudokuisfun.ocr.OCRScanner;
 import com.danbuntu.sudokuisfun.puzzle.Puzzle;
 import com.danbuntu.sudokuisfun.utils.SudokuUtils;
 
@@ -43,9 +40,9 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
         assertNotNull(tempFile);
 
-        final OCRData ocrData = new OCRData(context, tempFile.getAbsolutePath());
+        final OCRScanner ocrScanner = new OCRScanner(context, tempFile.getAbsolutePath());
 
-        ocrData.beginScan();
+        ocrScanner.beginScan();
         int[] correctArray = new int[]{
 
                -1, 9, 4,  1, 7, 2,  5, 8,-1,
@@ -63,14 +60,14 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         };
 
         int correct = 0;
-        int[] grid = ocrData.getGridData();
+        int[] grid = ocrScanner.getGridData();
         for (int i = 0; i < correctArray.length; i++) {
             try {
                 assertEquals(correctArray[i], grid[i]);
                 correct++;
-                Log.i("OCR-Test", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
+                Log.i("ApplicationTest", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
             } catch (AssertionFailedError e) {
-                Log.e("OCR-Test", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
+                Log.e("ApplicationTest", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
             }
         }
 

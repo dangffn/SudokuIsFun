@@ -1,5 +1,6 @@
 package com.danbuntu.sudokuisfun.ui;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,10 +28,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.danbuntu.sudokuisfun.R;
+import com.danbuntu.sudokuisfun.ocr.OCRScanner;
+import com.danbuntu.sudokuisfun.ocr.OCRUnit;
 import com.danbuntu.sudokuisfun.puzzle.GridSpecs;
 import com.danbuntu.sudokuisfun.utils.SudokuUtils;
-import com.danbuntu.sudokuisfun.ocr.OCR;
-import com.danbuntu.sudokuisfun.ocr.OCRData;
 
 /**
  * Created by Dan on 4/28/2016. Have a great day!
@@ -38,7 +39,7 @@ import com.danbuntu.sudokuisfun.ocr.OCRData;
 
 public class OCRActivity extends AppCompatActivity {
 
-    OCRData ocrData;
+    OCRScanner ocrScanner;
     ImageView imageView, selectedRegion;
     Rect bitmapRect;
     Spinner spnDigit;
@@ -46,7 +47,7 @@ public class OCRActivity extends AppCompatActivity {
     Bitmap gridDisplay;
     TextView txtStatus;
     int[] coord;
-    boolean[][] learned;
+    boolean[][] learnedCells;
     boolean selected;
 
     @Override
@@ -61,20 +62,20 @@ public class OCRActivity extends AppCompatActivity {
         spnDigit = (Spinner) findViewById(R.id.spnTrainNumber);
         coord = new int[6];
 
-        learned = new boolean[GridSpecs.ROWS][GridSpecs.COLS];
+        learnedCells = new boolean[GridSpecs.ROWS][GridSpecs.COLS];
 
         chkPreview = (CheckBox) findViewById(R.id.chkPreview);
         chkPreview.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (ocrData != null && selectedRegion.getDrawable() != null) {
+                if (ocrScanner != null && selectedRegion.getDrawable() != null) {
                     if (isChecked) {
                         selectedRegion.setImageBitmap(null);
-                        OCR ocr = new OCR(ocrData.getRegionBitmap(coord[0], coord[1]));
+                        OCRUnit ocr = new OCRUnit(ocrScanner.getRegionBitmap(coord[0], coord[1]));
                         ocr.prepare(true);
                         selectedRegion.setImageBitmap(ocr.getBitmap());
                     } else {
-                        selectedRegion.setImageBitmap(ocrData.getRegionBitmap(coord[0], coord[1]));
+                        selectedRegion.setImageBitmap(ocrScanner.getRegionBitmap(coord[0], coord[1]));
                     }
                 }
             }
@@ -100,9 +101,9 @@ public class OCRActivity extends AppCompatActivity {
                             coord[4] = boxX + (bitmapRect.width() / GridSpecs.COLS);
                             coord[5] = boxY + (bitmapRect.height() / GridSpecs.ROWS);
 
-                            Bitmap region = ocrData.getRegionBitmap(sectionX, sectionY);
+                            Bitmap region = ocrScanner.getRegionBitmap(sectionX, sectionY);
 
-                            OCR ocr = new OCR(region);
+                            OCRUnit ocr = new OCRUnit(region);
                             ocr.prepare(true);
 
                             if (chkPreview.isChecked()) {
@@ -112,12 +113,13 @@ public class OCRActivity extends AppCompatActivity {
                             }
 
                             if (!ocr.isBlank()) {
-                                ocrData.scan(ocr, true);
+                                ocrScanner.scan(ocr, true);
                                 txtStatus.setText(String.format(getString(R.string.thisLooksLikeA), ocr.getValue()));
+                                spnDigit.setSelection(ocr.getValue() - 1);
                             } else {
-                                if (!learned[coord[0]][coord[1]]) {
+                                if (!learnedCells[coord[0]][coord[1]]) {
                                     colorCell(Color.RED);
-                                    learned[coord[0]][coord[1]] = true;
+                                    learnedCells[coord[0]][coord[1]] = true;
                                 }
                                 txtStatus.setText(getString(R.string.cellIsEmpty));
                             }
@@ -132,7 +134,7 @@ public class OCRActivity extends AppCompatActivity {
             }
         });
 
-        if(!PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.pref_ocr_first_run), false)) {
+        if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.pref_ocr_first_run), false)) {
             showHowToDialog();
         } else {
             showImageDialog();
@@ -151,12 +153,20 @@ public class OCRActivity extends AppCompatActivity {
     }
 
     public void trainOCR(View view) {
-        if (ocrData != null && selected && !learned[coord[0]][coord[1]]) {
+        if (ocrScanner != null && selected && !learnedCells[coord[0]][coord[1]]) {
 
-            ocrData.save(coord[0], coord[1], Integer.valueOf(spnDigit.getSelectedItem().toString()));
+            // process the data and save to the learning file
+            ocrScanner.saveLearnedOCRData(coord[0], coord[1], Integer.valueOf(spnDigit.getSelectedItem().toString()));
 
-            // prevents same digit from being learned twice
-            learned[coord[0]][coord[1]] = true;
+            // increment the signature tally in the preferences
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            int sigCount = prefs.getInt(getString(R.string.pref_key_externalSigCount), 0);
+            SharedPreferences.Editor prefsEdit = prefs.edit();
+            prefsEdit.putInt(getString(R.string.pref_key_externalSigCount), sigCount + 1);
+            prefsEdit.apply();
+
+            // prevents same digit from being learnedCells twice
+            learnedCells[coord[0]][coord[1]] = true;
 
             colorCell(Color.GREEN);
 
@@ -165,13 +175,13 @@ public class OCRActivity extends AppCompatActivity {
     }
 
     private void displayImage() {
-        if (ocrData == null || ocrData.getGridBitmap() == null) return;
-        imageView.setImageBitmap(ocrData.getGridBitmap());
-        bitmapRect = Overlay.getBitmapRect(imageView, ocrData.getGridBitmap());
+        if (ocrScanner == null || ocrScanner.getGridBitmap() == null) return;
+        imageView.setImageBitmap(ocrScanner.getGridBitmap());
+        bitmapRect = Overlay.getBitmapRect(imageView, ocrScanner.getGridBitmap());
         if (bitmapRect != null)
-            gridDisplay = Bitmap.createScaledBitmap(ocrData.getGridBitmap(), bitmapRect.width(), bitmapRect.height(), false);
+            gridDisplay = Bitmap.createScaledBitmap(ocrScanner.getGridBitmap(), bitmapRect.width(), bitmapRect.height(), false);
         imageView.setImageBitmap(gridDisplay);
-        learned = new boolean[GridSpecs.ROWS][GridSpecs.COLS];
+        learnedCells = new boolean[GridSpecs.ROWS][GridSpecs.COLS];
         selectedRegion.setImageBitmap(null);
     }
 
@@ -236,8 +246,8 @@ public class OCRActivity extends AppCompatActivity {
 
             String path = data.getExtras().getString(getString(R.string.intent_extra_imagePath));
             if (path != null) {
-                ocrData = new OCRData(this, path);
-                if (ocrData.getGridBitmap() != null) {
+                ocrScanner = new OCRScanner(this, path);
+                if (ocrScanner.getGridBitmap() != null) {
                     displayImage();
                 }
 

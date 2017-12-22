@@ -175,7 +175,7 @@
     <string name="created_on">Created on %s</string>
     <string name="previewProcessedImage">Preview Processed Image</string>
     <string name="clickToPreview">Tap a number on the grid to preview</string>
-    <string name="thisLooksLikeA">This looks like a [%s]</string>
+    <string name="thisLooksLikeA">This looks like a [%d]</string>
     <string name="cellIsEmpty">This Cell is Empty</string>
     <string name="ocrActivityWelcomeMessage">To train the computer to recognize digits more efficiently, first load a picture of a sudoku puzzle using either the camera or gallery icon at the top right.\n\nAfter you load a sudoku puzzle, tap one of the digits to preview it\n\nThen use the dropdown box at the bottom to tell the computer which digit you selected and hit Train</string>
     <string name="puzzle_information">Puzzle Information</string>

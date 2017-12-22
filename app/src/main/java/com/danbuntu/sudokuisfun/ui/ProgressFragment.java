@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.danbuntu.sudokuisfun.ocr.OCRData;
+import com.danbuntu.sudokuisfun.ocr.OCRScanner;
 import com.danbuntu.sudokuisfun.puzzle.GridSpecs;
 
 /**
@@ -54,7 +54,7 @@ public class ProgressFragment extends DialogFragment {
         if(args == null) return;
 
         String filePath = args.getString("PATH");
-        final OCRData ocrData = new OCRData(getActivity(), filePath);
+        final OCRScanner ocrScanner = new OCRScanner(getActivity(), filePath);
 
         handler = new Handler(Looper.getMainLooper()) {
             @Override
@@ -81,17 +81,17 @@ public class ProgressFragment extends DialogFragment {
         mOcrThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                ocrData.setScanListener(new OCRData.ScanListener() {
+                ocrScanner.setScanListener(new OCRScanner.ScanListener() {
                     @Override
                     public void onCellFinished() {
                         handler.sendEmptyMessage(TICK);
                     }
                 });
-                ocrData.beginScan();
+                ocrScanner.beginScan();
                 Message message = new Message();
                 Bundle bundle = new Bundle();
-                bundle.putIntArray("GRID", ocrData.getGridData());
-                bundle.putParcelable("IMAGE", ocrData.getGridBitmap());
+                bundle.putIntArray("GRID", ocrScanner.getGridData());
+                bundle.putParcelable("IMAGE", ocrScanner.getGridBitmap());
                 message.setData(bundle);
                 handler.sendMessage(message);
             }
