@@ -1,6 +1,5 @@
 package com.danbuntu.sudokuisfun.ui;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;

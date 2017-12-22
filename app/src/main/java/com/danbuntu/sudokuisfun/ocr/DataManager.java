@@ -6,6 +6,7 @@ import android.util.Log;
 import com.danbuntu.sudokuisfun.R;
 import com.danbuntu.sudokuisfun.utils.ThisBackupAgent;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -105,9 +106,10 @@ public class DataManager {
      */
     private String getAssetString() {
 
+        StringBuilder sb = new StringBuilder();
+
         try {
 
-            StringBuilder sb = new StringBuilder();
             byte[] buffer = new byte[BUFFER_LENGTH];
             int count;
             
@@ -119,13 +121,11 @@ public class DataManager {
             
             is.close();
 
-            return sb.toString();
-            
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return sb.toString();
 
     }
 
@@ -134,9 +134,9 @@ public class DataManager {
      */
     private String getDataFileString() {
 
+        StringBuilder sb = new StringBuilder();
         try {
 
-            StringBuilder sb = new StringBuilder();
             byte[] buffer = new byte[BUFFER_LENGTH];
             int count;
             
@@ -161,8 +161,7 @@ public class DataManager {
             e.printStackTrace();
         }
 
-        return null;
-
+        return sb.toString();
     }
 
     void save() throws IOException {
@@ -194,11 +193,22 @@ public class DataManager {
         }
     }
 
-    private String toJSON() throws JSONException {
+    String toJSON() throws JSONException {
         JSONObject object = new JSONObject();
 
         for (String key : digitData.keySet()) {
-            object.put(key, digitData.get(key).toJSON());
+
+            JSONObject o = new JSONObject();
+            for (String subKey : digitData.get(key).keySet()) {
+
+                JSONArray array = new JSONArray();
+                for (int i : digitData.get(key).get(subKey)) {
+                    array.put(i);
+                }
+
+                o.put(subKey, array);
+            }
+            object.put(key, o);
         }
 
         return object.toString();
