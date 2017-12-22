@@ -104,6 +104,7 @@ public class PuzzleItemAdapter extends ResourceCursorAdapter {
 
 
         // set card background and checkbox status
+        chk.setChecked(false);
         if (selectable) {
             // selectable mode is on
             icon.setVisibility(View.GONE);
@@ -118,7 +119,6 @@ public class PuzzleItemAdapter extends ResourceCursorAdapter {
             // selectable mode is off
             icon.setVisibility(View.VISIBLE);
             chk.setVisibility(View.GONE);
-            chk.setChecked(false);
         }
 
         btnInfo.setOnClickListener(new View.OnClickListener() {
