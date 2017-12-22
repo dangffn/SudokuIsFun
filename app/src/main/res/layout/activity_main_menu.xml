@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.danbuntu.androidsudoku.RainingNumbers
+    <com.danbuntu.sudokuisfun.ui.RainingNumbers
         android:id="@+id/rainingNumbers"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -16,43 +17,58 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_centerInParent="true"
         android:gravity="center"
-        android:layout_centerInParent="true">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnStartSudoku"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/key_background"
-            android:onClick="startNewGameActivity"
-            android:text="@string/button_new_game"
-            android:visibility="invisible"
             android:layout_margin="5dp"
-            android:padding="5dp"/>
+            android:onClick="startNewGameActivity"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/button_newGame"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnLoadLastGame"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/key_background"
-            android:onClick="loadLastGame"
-            android:text="@string/button_last_game"
-            android:visibility="invisible"
             android:layout_margin="5dp"
             android:enabled="false"
-            android:padding="5dp"/>
+            android:onClick="loadLastGame"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/button_resumeGame"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnLoadStatistics"
+            style="@style/AppTheme.MenuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:onClick="startStatisticsActivity"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/button_statistics"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnSettings"
+            style="@style/AppTheme.MenuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/key_background"
-            android:onClick="startSettingsActivity"
-            android:text="@string/button_settings"
-            android:visibility="invisible"
             android:layout_margin="5dp"
-            android:padding="5dp" />
+            android:onClick="startSettingsActivity"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/button_settings"
+            android:visibility="invisible" />
 
     </LinearLayout>
 

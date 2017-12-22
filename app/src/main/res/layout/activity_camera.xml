@@ -2,28 +2,40 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     style="@style/KeyBoardTheme.Row">
     
-    <com.danbuntu.androidsudoku.CameraView
+    <com.danbuntu.sudokuisfun.ui.CameraView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:id="@+id/cameraView"/>
+        android:visibility="gone"
+        android:id="@+id/cameraView"
+        android:background="@android:color/transparent"/>
 
-    <com.danbuntu.androidsudoku.Overlay
+    <com.danbuntu.sudokuisfun.ui.Overlay
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/overlay"
         android:clickable="false"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/message_centerImageCamera"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnTakePicture"
+        android:contentDescription="Take a picture of a Sudoku puzzle"
         android:layout_gravity="bottom|center_horizontal"
         android:src="@android:drawable/ic_menu_camera"
-        android:background="@drawable/camera_button_background"
-        android:text="Take Picture"
+        android:background="@drawable/round_button"
+        android:text="@string/button_takePicture"
         android:onClick="onCaptureClick"
         android:padding="15dp"
         android:enabled="false"
@@ -34,9 +46,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnChooseFromGallery"
+        android:contentDescription="Get a Sudoku grid picture from the gallery instead"
         android:src="@android:drawable/ic_menu_gallery"
         android:background="@android:color/transparent"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="10dp"/>
     
 

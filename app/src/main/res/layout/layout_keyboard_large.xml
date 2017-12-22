@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    android:theme="@style/KeyBoardTheme">
+
+    <LinearLayout
+        style="@style/KeyBoardTheme.Row"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn1"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="1"
+            android:textSize="@dimen/keyboard_text_size" />
+
+        <Button
+            android:id="@+id/btn2"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="2"
+            android:textSize="@dimen/keyboard_text_size" />
+
+        <Button
+            android:id="@+id/btn3"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="3"
+            android:textSize="@dimen/keyboard_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/KeyBoardTheme.Row"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn4"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="4"
+            android:textSize="@dimen/keyboard_text_size" />
+
+        <Button
+            android:id="@+id/btn5"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="5"
+            android:textSize="@dimen/keyboard_text_size" />
+
+        <Button
+            android:id="@+id/btn6"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="6"
+            android:textSize="@dimen/keyboard_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/KeyBoardTheme.Row"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn7"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="7"
+            android:textSize="@dimen/keyboard_text_size" />
+
+        <Button
+            android:id="@+id/btn8"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="8"
+            android:textSize="@dimen/keyboard_text_size" />
+
+        <Button
+            android:id="@+id/btn9"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:text="9"
+            android:textSize="@dimen/keyboard_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/KeyBoardTheme.Row"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnClear"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+
+            android:src="@drawable/ic_clear"
+            android:text="Clear" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/btnModeToggle"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_edit"
+
+                android:text="Toggle Mode" />
+
+            <ImageButton
+                android:id="@+id/btnShowImage"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_visibility"
+                android:text="Show Image"
+
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

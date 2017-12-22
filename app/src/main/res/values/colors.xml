@@ -1,28 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#367de1</color>
+    <color name="colorPrimary">@color/palette08</color>
+    <color name="colorPrimaryDark">@color/palette10</color>
+    <color name="colorAccent">@color/palette07</color>
 
-    <color name="cellHighlighted">#eac808</color>
-    <color name="cellLocked">#c6c6c6</color>
-    <color name="cellSelected">#008ac1</color>
-    <color name="cellPressed">#029f26</color>
+    <color name="overlay_background">#508f9b</color>
 
-    <color name="thinGridLine">#333333</color>
-    <color name="thickGridLine">#101010</color>
+    <color name="grid_text_possibility">@color/grid_border_alert</color>
+    <color name="grid_text_value">#000000</color>
+    <color name="grid_border_alert">#c20006</color>
+    <color name="grid_line_thin">#333333</color>
+    <color name="grid_line_thick">#101010</color>
+    <color name="grid_cell_highlighted">#ffe869</color>
+    <color name="grid_cell_locked">#a7a7a7</color>
+    <color name="grid_cell_selected">@color/palette06</color>
+    <color name="grid_cell_pressed">#00a325</color>
+    <color name="grid_cell_hint">#8803a9f4</color>
 
-    <color name="semiTransparent">#99000000</color>
-    <color name="semiTransparentBlue">#b94c55ff</color>
-    <color name="grayOverlayBackground">#508f9b</color>
+    <color name="keyboard_normal">@color/palette07</color>
+    <color name="keyboard_normal_pressed">@color/palette09</color>
+    <color name="keyboard_possibilities">#ba252a</color>
+    <color name="keyboard_possibilities_pressed">#a11f24</color>
 
-    <color name="gridPossibilityTextColor">#c70007</color>
-    <color name="gridValueTextColor">#000000</color>
 
-    <color name="keyBackGround_Normal">#77cfd2</color>
-    <color name="keyBackGround_Pressed">#038084</color>
-    <color name="keyBackGround_Disabled">#434f50</color>
+    <color name="palette01">#e1f5fe</color>
+    <color name="palette02">#b3e5fc</color>
+    <color name="palette03">#81d4fa</color>
+    <color name="palette04">#4fc3f7</color>
+    <color name="palette05">#29b6f6</color>
+    <color name="palette06">#03a9f4</color>
+    <color name="palette07">#039be5</color>
+    <color name="palette08">#0288d1</color>
+    <color name="palette09">#0277bd</color>
+    <color name="palette10">#01579b</color>
 
-    <color name="light_blue">#c800a2a7</color>
-    <color name="white">#ffffff</color>
+
+    <color name="text_color">#000000</color>
+    <color name="text_color_description">#4b4b4b</color>
+    <color name="text_color_description_secondary">#7f7f7f</color>
+    <color name="disabled">#2B799F</color>
+
+    <color name="c1">#d90005</color>
+    <color name="c2">#ff802b</color>
+    <color name="c3">#FFF200</color>
+    <color name="c4">#3CEC00</color>
+    <color name="c5">#2E33FA</color>
+    <color name="c6">#11F3FF</color>
+    <color name="c7">#940EED</color>
+    <color name="c8">#FFAEC9</color>
+    <color name="c9">#91593C</color>
+
+    <color name="d1">#8f0003</color>
+    <color name="d2">#a8541c</color>
+    <color name="d3">#a89f00</color>
+    <color name="d4">#289b00</color>
+    <color name="d5">#1e22a5</color>
+    <color name="d6">#0ba0a8</color>
+    <color name="d7">#62099c</color>
+    <color name="d8">#a87384</color>
+    <color name="d9">#603b28</color>
 </resources>

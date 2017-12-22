@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/galleryFrameLayout">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:background="#000000"/>
+
+    <com.danbuntu.sudokuisfun.ui.Overlay
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/resizableOverlay"
+        android:clickable="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/message_centerImageGallery"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCropPicture"
+        android:layout_gravity="bottom|center_horizontal"
+        android:src="@android:drawable/ic_menu_crop"
+        android:background="@drawable/round_button"
+        android:text="@string/button_cropPicture"
+        android:padding="15dp"
+        android:enabled="false"
+        android:clickable="false"
+        android:layout_margin="10dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnChooseFromCamera"
+        android:src="@android:drawable/ic_menu_camera"
+        android:background="@android:color/transparent"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"/>
+
+</FrameLayout>

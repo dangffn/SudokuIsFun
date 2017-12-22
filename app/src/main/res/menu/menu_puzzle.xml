@@ -2,33 +2,38 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/menu_clear"
-        android:icon="@android:drawable/ic_menu_delete"
-        android:title="Clear"
-        app:showAsAction="ifRoom"/>
-
-    <item android:id="@+id/menu_toggle_lock"
-        android:icon="@android:drawable/ic_lock_lock"
-        android:title="Toggle Lock"
-        app:showAsAction="ifRoom"/>
-
-    <item android:id="@+id/menu_save_template"
-        android:icon="@android:drawable/ic_menu_save"
-        android:title="Save Template"
-        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/menu_undo"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="@string/menu_undo"
+        android:visible="false"
+        app:showAsAction="always"/>
 
     <item android:id="@+id/menu_save_progress"
         android:icon="@android:drawable/ic_menu_save"
-        android:title="Save Progress"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/menu_saveProgress"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_clear"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/menu_clear"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_save_template"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/menu_newPuzzle"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_find_possibilities"
+        android:title="@string/menu_findPossibilities"
+        app:showAsAction="never"/>
 
     <item android:id="@+id/menu_solve"
-        android:title="Solve"
+        android:title="@string/menu_solvePuzzle"
         app:showAsAction="never"/>
 
     <item android:id="@+id/action_settings"
-        android:title="Settings"
+        android:title="@string/menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
 </menu>

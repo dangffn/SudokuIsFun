@@ -4,18 +4,22 @@
 
     <item android:id="@+id/menu_camera"
         android:icon="@android:drawable/ic_menu_camera"
-        android:title="Camera"
+        android:title="@string/menu_fromCamera"
         app:showAsAction="always"/>
 
     <item android:id="@+id/menu_gallery"
         android:icon="@android:drawable/ic_menu_gallery"
-        android:title="Gallery"
+        android:title="@string/menu_fromGallery"
         app:showAsAction="always"/>
 
-
     <item android:id="@+id/menu_blank_puzzle"
-        android:icon="@android:drawable/btn_plus"
-        android:title="Blank Puzzle"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/menu_newBlankPuzzle"
         app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/menu_cab_obfuscate"
+        android:title="@string/menu_newRandomPuzzle"
+        android:icon="@android:drawable/ic_media_play"
+        app:showAsAction="never"/>
 
 </menu>
