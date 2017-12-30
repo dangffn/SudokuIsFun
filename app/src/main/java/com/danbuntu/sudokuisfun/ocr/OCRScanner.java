@@ -222,7 +222,7 @@ public class OCRScanner {
                 }
 
             } else {
-                Log.e("OCRDATA", "Warning, signature data file appears to have incorrect length, most likely corrupted data file");
+                Log.e("OCRDATA", "Warning, signature dataMap file appears to have incorrect length, most likely corrupted dataMap");
             }
         }
 

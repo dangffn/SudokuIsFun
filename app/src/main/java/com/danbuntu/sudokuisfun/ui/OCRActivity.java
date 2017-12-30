@@ -258,7 +258,7 @@ public class OCRActivity extends AppCompatActivity {
 
     private void showHowToDialog() {
         new AlertDialog.Builder(this)
-                .setTitle("OCR Trainer")
+                .setTitle("OCRUnit Trainer")
                 .setMessage(getString(R.string.ocrActivityWelcomeMessage))
                 .setPositiveButton(getString(R.string.button_got_it), new DialogInterface.OnClickListener() {
                     @Override

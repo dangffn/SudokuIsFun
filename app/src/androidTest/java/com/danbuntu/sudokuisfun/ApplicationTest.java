@@ -65,9 +65,9 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
             try {
                 assertEquals(correctArray[i], grid[i]);
                 correct++;
-                Log.i("ApplicationTest", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
+                Log.i("OCRUnit-Test", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
             } catch (AssertionFailedError e) {
-                Log.e("ApplicationTest", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
+                Log.e("OCRUnit-Test", String.format("Compared index [%s] expect: [%s] got: [%s]", i, correctArray[i], grid[i]));
             }
         }
 
