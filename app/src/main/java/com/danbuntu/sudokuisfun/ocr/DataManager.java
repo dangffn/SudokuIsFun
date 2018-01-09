@@ -197,18 +197,7 @@ public class DataManager {
         JSONObject object = new JSONObject();
 
         for (String key : digitData.keySet()) {
-
-            JSONObject o = new JSONObject();
-            for (String subKey : digitData.get(key).keySet()) {
-
-                JSONArray array = new JSONArray();
-                for (int i : digitData.get(key).get(subKey)) {
-                    array.put(i);
-                }
-
-                o.put(subKey, array);
-            }
-            object.put(key, o);
+            object.put(key, digitData.get(key).toJSON());
         }
 
         return object.toString();
