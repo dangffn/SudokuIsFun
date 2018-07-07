@@ -505,6 +505,7 @@ public class Puzzle {
             public void run() {
                 boolean removedUserInput = false;
 
+                clearHints();
                 savePuzzleState();
 
                 // pre-scan to find out if we can do this puzzle

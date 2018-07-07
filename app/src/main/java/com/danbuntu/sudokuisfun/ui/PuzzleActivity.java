@@ -237,7 +237,7 @@ public class PuzzleActivity extends AppCompatActivity implements ActionMode.Call
                 pm.logFinishTime(puzzleName, puzzleTimer.getPresentDuration(), puzzle.didComputerAssist());
 
                 if(puzzle.getHintCount() > 0) {
-                    Toast.makeText(PuzzleActivity.this, "Fixed " + puzzle.getHintCount() + " mistakes (highlighted in blue)", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PuzzleActivity.this, "Fixed " + puzzle.getHintCount() + " mistakes (highlighted in orange)", Toast.LENGTH_LONG).show();
                 }
             }
 
