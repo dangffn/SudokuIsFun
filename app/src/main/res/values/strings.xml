@@ -161,6 +161,7 @@
     <string name="menu_bad">Not Right</string>
     <string name="menu_findPossibilities">Find All Cell Possibilities*</string>
     <string name="menu_puzzleInfo">Puzzle Info</string>
+    <string name="menu_show_errors">Show Errors</string>
 
     <!--these are in the NewGameActivity-->
     <string name="menu_fromGallery">From Gallery</string>

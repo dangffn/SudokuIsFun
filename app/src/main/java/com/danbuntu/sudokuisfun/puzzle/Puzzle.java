@@ -108,6 +108,23 @@ public class Puzzle {
         };
     }
 
+    public static Puzzle from(Puzzle puzzle) {
+        Puzzle out = new Puzzle();
+        out.loadPuzzleData(puzzle.getLockedCells());
+        return out;
+    }
+
+    public void matchCells(Puzzle puzzle) {
+        Cell[] cellArray = puzzle.getCellArray();
+        clearHints();
+        for(int i=0; i<cellArray.length; i++) {
+            if(mCells[i].getValue() != Cell.NONE && mCells[i].getValue() != cellArray[i].getValue()) {
+                mCells[i].setHint(true);
+                hintsShowing++;
+            }
+        }
+    }
+
     public static void substituteCellValuesRandomly(Cell[][] array) {
         Integer[] digits = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         List<Integer> random = Arrays.asList(digits);
@@ -832,6 +849,14 @@ public class Puzzle {
         return out;
     }
 
+    public int[] getLockedCells() {
+        int[] out = new int[mCells.length];
+        for(int i=0; i<mCells.length; i++) {
+            if(mCells[i].isLocked()) out[i] = mCells[i].getValue();
+        }
+        return out;
+    }
+
     public Bundle onSaveInstanceState() {
 
         Bundle bundle = new Bundle();
@@ -908,23 +933,29 @@ public class Puzzle {
     public void setCell(int x, int y, int value, boolean editMode, boolean autoUpdatePossibilities) {
         if (x < 0 || y < 0 || x > mCols.length || y > mRows.length) return;
 
-        if (hintsShowing != 0) clearHints();
+        //TODO check to make sure this works
+        Cell cell = mRows[y][x];
+        if(cell.isHint() && cell.getValue() != value) {
+            cell.setHint(false);
+            hintsShowing--;
+        }
+        //if (hintsShowing != 0) clearHints();
 
         if (!editMode) {
 
             // log this change
-            if (mRows[y][x].setValue(value)) {
-                if (autoUpdatePossibilities) removePossibility(mRows[y][x], value);
+            if (cell.setValue(value)) {
+                if (autoUpdatePossibilities) removePossibility(cell, value);
                 incrementRev();
-                checkIndividualCellValidity(mRows[y][x], showConflicts);
+                checkIndividualCellValidity(cell, showConflicts);
             }
 
         } else {
 
-            mRows[y][x].setValue(value, true);
-            if (value != -1) mRows[y][x].setLocked(true);
+            cell.setValue(value, true);
+            if (value != -1) cell.setLocked(true);
             // always show conflicts when editing a cell
-            checkIndividualCellValidity(mRows[y][x], true);
+            checkIndividualCellValidity(cell, true);
 
         }
     }
@@ -980,7 +1011,12 @@ public class Puzzle {
     public void clearCell(int x, int y, boolean force) {
         if (x < 0 || y < 0 || x > mCols.length || y > mRows.length) return;
 
-        if (hintsShowing != 0) clearHints();
+        Cell cell = mRows[y][x];
+        if(cell.isHint()) {
+            cell.setHint(false);
+            hintsShowing--;
+        }
+        //if (hintsShowing != 0) clearHints();
 
         if (mRows[y][x].clear(force)) {
             checkIndividualCellValidity(mRows[y][x], showConflicts);

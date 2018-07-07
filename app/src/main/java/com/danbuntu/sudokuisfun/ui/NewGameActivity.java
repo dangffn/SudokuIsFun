@@ -127,6 +127,9 @@ public class NewGameActivity extends AppCompatActivity {
             case (R.id.menu_cab_obfuscate):
                 showRandomPuzzleDialog();
                 break;
+            case(R.id.menu_settings):
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
         }
 
         return super.onOptionsItemSelected(item);

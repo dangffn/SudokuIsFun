@@ -12,6 +12,8 @@ import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.app.FragmentManager;
 import android.support.v7.app.ActionBar;
@@ -426,6 +428,9 @@ public class PuzzleActivity extends AppCompatActivity implements ActionMode.Call
                     }
                 }).start();
                 break;
+            case(R.id.menu_show_errors):
+                showErrors();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -663,6 +668,40 @@ public class PuzzleActivity extends AppCompatActivity implements ActionMode.Call
         }
 
         return firstImageLoad;
+    }
+
+    private void showErrors() {
+        final Handler handler = new Handler(Looper.getMainLooper());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final Puzzle checkPuzzle = Puzzle.from(puzzle);
+                checkPuzzle.doSolve(false, true);
+                puzzle.matchCells(checkPuzzle);
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if(puzzle.getHintCount() <= 0) {
+
+                            Toast.makeText(PuzzleActivity.this, "No errors found", Toast.LENGTH_SHORT)
+                                    .show();
+
+                        } else {
+
+                            int errors = puzzle.getHintCount();
+                            Toast.makeText(PuzzleActivity.this, errors + "errors found", Toast.LENGTH_SHORT)
+                                    .show();
+                            gridView.invalidate();
+
+                        }
+
+                    }
+                });
+            }
+        }).start();
     }
 
     private void showFirstImageLoadDialog() {

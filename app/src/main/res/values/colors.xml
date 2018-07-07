@@ -15,7 +15,7 @@
     <color name="grid_cell_locked">#a7a7a7</color>
     <color name="grid_cell_selected">@color/palette06</color>
     <color name="grid_cell_pressed">#00a325</color>
-    <color name="grid_cell_hint">#8803a9f4</color>
+    <color name="grid_cell_hint">#efb400</color>
 
     <color name="keyboard_normal">@color/palette07</color>
     <color name="keyboard_normal_pressed">@color/palette09</color>
