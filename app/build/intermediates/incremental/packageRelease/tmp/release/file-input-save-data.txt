@@ -1,0 +1,27 @@
+#Internal package file, do not edit.
+#Sat Jul 07 13:04:24 EDT 2018
+2.base=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/assets/release
+5.set=ASSET
+0.path=default-grid.png
+2.baseType=DIRECTORY
+3.base=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/assets/release
+2.set=ASSET
+1.path=ocr-test.png
+4.base=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/transforms/dexMerger/release/0
+count=6
+5.baseType=DIRECTORY
+2.path=databases/puzzles.db
+5.base=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/assets/release
+4.set=DEX
+3.path=Roboto-Regular.ttf
+3.baseType=DIRECTORY
+1.set=ASSET
+4.path=classes.dex
+1.baseType=DIRECTORY
+5.path=ocrdata
+0.base=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/assets/release
+0.baseType=DIRECTORY
+3.set=ASSET
+1.base=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/assets/release
+4.baseType=DIRECTORY
+0.set=ASSET

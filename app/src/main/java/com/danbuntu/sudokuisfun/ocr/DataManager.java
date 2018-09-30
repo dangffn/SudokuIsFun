@@ -63,8 +63,10 @@ public class DataManager {
         if((data = getDataFileString()) != null) {
             addSignaturesFromString(data);
 
-        } else if((data = getAssetString()) != null) {
+        } else {
+            data = getAssetString();
             addSignaturesFromString(data);
+
         }
     }
 
@@ -134,34 +136,34 @@ public class DataManager {
      */
     private String getDataFileString() {
 
+        File externalOCRFile = new File(externalOCRDataFile);
+        if(!externalOCRFile.exists()) {
+            return null;
+        }
+
         StringBuilder sb = new StringBuilder();
         try {
 
             byte[] buffer = new byte[BUFFER_LENGTH];
             int count;
             
-            if (externalOCRDataFile != null && new File(externalOCRDataFile).exists()) {
+            synchronized(ThisBackupAgent.sSyncLock) {
+                Log.i("DataManager", "Found external OCR data file, loading");
 
-                synchronized(ThisBackupAgent.sSyncLock) {
-                    Log.i("DataManager", "Found external OCR data file, loading");
-
-                    FileInputStream fis = new FileInputStream(externalOCRDataFile);
-                    while ((count = fis.read(buffer)) != -1) {
-                        sb.append(new String(buffer, 0, count));
-                    }
-                    fis.close();
+                FileInputStream fis = new FileInputStream(externalOCRDataFile);
+                while ((count = fis.read(buffer)) != -1) {
+                    sb.append(new String(buffer, 0, count));
                 }
-                return sb.toString();
-
-            } else {
-                Log.i("DataManager", "Could not find external ocr data file, skipping");
+                fis.close();
             }
+            return sb.toString();
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return sb.toString();
+        return null;
     }
 
     void save() throws IOException {

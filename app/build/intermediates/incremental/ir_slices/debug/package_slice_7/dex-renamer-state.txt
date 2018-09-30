@@ -1,0 +1,4 @@
+#Sat Jul 07 12:58:27 EDT 2018
+base.0=/Users/dan/StudioProjects/SudokuIsFun/app/build/intermediates/transforms/dexMerger/debug/24
+path.0=classes.dex
+renamed.0=classes.dex

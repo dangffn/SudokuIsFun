@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.danbuntu.sudokuisfun"
+    android:versionCode="5"
+    android:versionName="1.4" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="24" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:backupAgent="com.danbuntu.sudokuisfun.utils.ThisBackupAgent"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:testOnly="true"
+        android:theme="@style/AppTheme.Actionbar" >
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAIAUSG4rzJZqIBCkhUYrz4LlQ1JDKDw8Fpv9fOvw" />
+
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.MainMenuActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.HomeScreen.NoActionbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.PuzzleActivity"
+            android:label="@string/activity_label_puzzle" />
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.StatisticsActivity"
+            android:label="@string/activity_label_statistics" />
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.CameraActivity"
+            android:label="@string/activity_label_camera"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Camera.NoActionbar" />
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.OCRActivity"
+            android:label="@string/activity_label_ocrTrainer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.GalleryActivity"
+            android:label="@string/activity_label_gallery"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.SettingsActivity"
+            android:label="@string/activity_label_settings" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name="com.danbuntu.sudokuisfun.ui.NewGameActivity"
+            android:label="@string/activity_label_newGame" />
+
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.danbuntu.sudokuisfun.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>

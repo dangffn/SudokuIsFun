@@ -1,0 +1,191 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+MERGED from [com.android.support:appcompat-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-24.1.0.aar/cade3453d12202e9a11f35a9f5ebfbd3/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:cardview-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/cardview-v7-24.1.0.aar/53488f464785ed0152b8cde4e97576ae/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:percent:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/percent-24.1.0.aar/7f1903c166e80c63faeb05c00395d809/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:animated-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-24.1.0.aar/58cc9d8f37a601d74af8f60d8910472e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-24.1.0.aar/9260a3c458b8f45196a73671db6d65c8/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-v4:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-v4-24.1.0.aar/17a9b936343d06ab6d98e551cafd037b/AndroidManifest.xml:17:1-27:12
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+	package
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:1-58:12
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:5:5-64
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:5:22-62
+uses-permission#android.permission.INTERNET
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:8:5-80
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:8:22-78
+uses-feature#android.hardware.camera
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:10:5-85
+	android:required
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:10:58-82
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:10:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:11:5-95
+	android:required
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:11:68-92
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:11:19-67
+application
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:13:5-56:19
+MERGED from [com.android.support:appcompat-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-24.1.0.aar/cade3453d12202e9a11f35a9f5ebfbd3/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-24.1.0.aar/cade3453d12202e9a11f35a9f5ebfbd3/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:cardview-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/cardview-v7-24.1.0.aar/53488f464785ed0152b8cde4e97576ae/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/cardview-v7-24.1.0.aar/53488f464785ed0152b8cde4e97576ae/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:percent:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/percent-24.1.0.aar/7f1903c166e80c63faeb05c00395d809/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:percent:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/percent-24.1.0.aar/7f1903c166e80c63faeb05c00395d809/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-24.1.0.aar/58cc9d8f37a601d74af8f60d8910472e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-24.1.0.aar/58cc9d8f37a601d74af8f60d8910472e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-24.1.0.aar/9260a3c458b8f45196a73671db6d65c8/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-24.1.0.aar/9260a3c458b8f45196a73671db6d65c8/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-v4:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-v4-24.1.0.aar/17a9b936343d06ab6d98e551cafd037b/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-v4-24.1.0.aar/17a9b936343d06ab6d98e551cafd037b/AndroidManifest.xml:25:5-20
+	android:backupAgent
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:18:9-53
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:16:9-41
+	android:icon
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:15:9-43
+	android:allowBackup
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:14:9-35
+	android:theme
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:17:9-50
+meta-data#com.google.android.backup.api_key
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:20:9-21:82
+	android:value
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:21:13-79
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:20:20-68
+activity#com.danbuntu.sudokuisfun.ui.MainMenuActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:23:9-30:20
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:24:13-45
+	android:theme
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:25:13-67
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:23:19-54
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:26:13-29:29
+action#android.intent.action.MAIN
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:27:17-69
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:27:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:28:17-77
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:28:27-74
+activity#com.danbuntu.sudokuisfun.ui.PuzzleActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:32:9-33:60
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:33:13-58
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:32:19-52
+activity#com.danbuntu.sudokuisfun.ui.StatisticsActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:34:9-35:64
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:35:13-62
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:34:19-56
+activity#com.danbuntu.sudokuisfun.ui.CameraActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:36:9-39:51
+	android:screenOrientation
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:39:13-49
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:37:13-58
+	android:theme
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:38:13-63
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:36:19-52
+activity#com.danbuntu.sudokuisfun.ui.OCRActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:40:9-42:51
+	android:screenOrientation
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:42:13-49
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:41:13-62
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:40:19-49
+activity#com.danbuntu.sudokuisfun.ui.GalleryActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:43:9-46:51
+	android:screenOrientation
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:46:13-49
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:44:13-59
+	android:theme
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:45:13-56
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:43:19-53
+activity#com.danbuntu.sudokuisfun.ui.SettingsActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:47:9-52:20
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:48:13-60
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:47:19-54
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:49:13-51:56
+	android:value
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:51:17-53
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:50:17-63
+activity#com.danbuntu.sudokuisfun.ui.NewGameActivity
+ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:53:9-54:62
+	android:label
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:54:13-59
+	android:name
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml:53:19-53
+uses-sdk
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-24.1.0.aar/cade3453d12202e9a11f35a9f5ebfbd3/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-24.1.0.aar/cade3453d12202e9a11f35a9f5ebfbd3/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:cardview-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/cardview-v7-24.1.0.aar/53488f464785ed0152b8cde4e97576ae/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/cardview-v7-24.1.0.aar/53488f464785ed0152b8cde4e97576ae/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:percent:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/percent-24.1.0.aar/7f1903c166e80c63faeb05c00395d809/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:percent:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/percent-24.1.0.aar/7f1903c166e80c63faeb05c00395d809/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-24.1.0.aar/58cc9d8f37a601d74af8f60d8910472e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-24.1.0.aar/58cc9d8f37a601d74af8f60d8910472e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-24.1.0.aar/9260a3c458b8f45196a73671db6d65c8/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-vector-drawable:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-24.1.0.aar/9260a3c458b8f45196a73671db6d65c8/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-v4:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-v4-24.1.0.aar/17a9b936343d06ab6d98e551cafd037b/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/support-v4-24.1.0.aar/17a9b936343d06ab6d98e551cafd037b/AndroidManifest.xml:21:5-23:54
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.1.0] /Users/dan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-24.1.0.aar/cade3453d12202e9a11f35a9f5ebfbd3/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		ADDED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/dan/StudioProjects/SudokuIsFun/app/src/main/AndroidManifest.xml

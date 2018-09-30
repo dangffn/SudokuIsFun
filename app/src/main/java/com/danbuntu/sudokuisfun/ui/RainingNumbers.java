@@ -172,9 +172,7 @@ public class RainingNumbers extends View implements View.OnTouchListener {
 
                     try {
                         Thread.sleep(GRAV_DELAY);
-                    } catch(InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    } catch(InterruptedException ignored) {}
                 }
             }
         });
