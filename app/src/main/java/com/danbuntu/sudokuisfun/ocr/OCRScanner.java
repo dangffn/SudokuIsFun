@@ -201,8 +201,14 @@ public class OCRScanner {
     }
 
     private void scanEachDigitSignatures(int[] ints, String signatureType, float[] certainty) {
-        for (int digit = 1; digit <= 9; digit++)
-            certainty[digit - 1] += compareSignatureToRawData(ints, mDataManager.digitData.get(String.valueOf(digit)).get(signatureType));
+        for (int digit = 1; digit <= 9; digit++) {
+            int index = digit - 1;
+            certainty[index] += compareSignatureToRawData(
+                    ints,
+                    mDataManager.getDigitData(
+                            String.valueOf(digit),
+                            signatureType));
+        }
     }
 
     private float compareSignatureToRawData(int[] current, ArrayList<Integer> saved) {

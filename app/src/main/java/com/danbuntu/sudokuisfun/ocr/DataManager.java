@@ -6,7 +6,6 @@ import android.util.Log;
 import com.danbuntu.sudokuisfun.R;
 import com.danbuntu.sudokuisfun.utils.ThisBackupAgent;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -27,19 +27,25 @@ public class DataManager {
     private static int BUFFER_LENGTH = 1024;
     private Context mContext;
     private String externalOCRDataFile;
-    HashMap<String, DataContainer> digitData;
+    private HashMap<String, DataContainer> digitDataDefault;
+    private HashMap<String, DataContainer> digitDataTrained;
 
     DataManager(Context context) {
         mContext = context;
-        digitData = new HashMap<>();
+        digitDataDefault = new HashMap<>();
+        digitDataTrained = new HashMap<>();
         externalOCRDataFile = getExternalDataFile(mContext).getAbsolutePath();
         init();
     }
 
     private void init() {
         for (int i = 1; i <= 9; i++) {
-            DataContainer container = new DataContainer();
-            digitData.put(String.valueOf(i), container);
+            DataContainer defaultContainer = new DataContainer();
+            digitDataDefault.put(String.valueOf(i), defaultContainer);
+
+            DataContainer trainedContainer = new DataContainer();
+            digitDataTrained.put(String.valueOf(i), trainedContainer);
+
         }
     }
 
@@ -48,25 +54,19 @@ public class DataManager {
     }
 
     DataContainer getDataForNumber(String n) {
-        if(digitData.containsKey(n)) {
-            return digitData.get(n);
+        if(digitDataDefault.containsKey(n)) {
+            return digitDataDefault.get(n);
         } else {
             return null;
         }
     }
 
     void loadSignatures() {
-        String data;
+        addSignaturesFromString(getAssetString(), digitDataDefault);
 
-        // only load signatures from the external data file
-        // if it exists ignore the asset file
-        if((data = getDataFileString()) != null) {
-            addSignaturesFromString(data);
-
-        } else {
-            data = getAssetString();
-            addSignaturesFromString(data);
-
+        String data = getDataFileString();
+        if(data != null) {
+            addSignaturesFromString(getDataFileString(), digitDataTrained);
         }
     }
 
@@ -74,8 +74,8 @@ public class DataManager {
         return new File(context.getFilesDir(), context.getString(R.string.filename_ocr));
     }
 
-    private void addSignaturesFromString(String jsonString) {
-        if(jsonString == null || jsonString.equals(""))
+    private void addSignaturesFromString(String jsonString, HashMap<String, DataContainer> into) {
+        if(jsonString == null || into == null || jsonString.equals(""))
             return;
 
         try {
@@ -91,7 +91,7 @@ public class DataManager {
                 JSONObject digitRawData = main.getJSONObject(key);
 
                 // this will append the dataMap to the existing container
-                digitData.get(key).parseDataChunk(digitRawData);
+                into.get(key).parseDataChunk(digitRawData);
                 signatures++;
             }
 
@@ -183,8 +183,14 @@ public class DataManager {
             // write the dataMap to the file
             FileOutputStream fos = new FileOutputStream(outFile);
             try {
-                String str = toJSON();
-                fos.write(str.getBytes("UTF-8"));
+
+                // save the trained JSON object only
+                JSONObject object = new JSONObject();
+                for (String key : digitDataTrained.keySet()) {
+                    object.put(key, digitDataTrained.get(key).toJSON());
+                }
+
+                fos.write(object.toString().getBytes("UTF-8"));
                 Log.i("DataManager", "Successfully saved " + externalOCRDataFile);
 
             } catch (JSONException e) {
@@ -195,14 +201,9 @@ public class DataManager {
         }
     }
 
-    String toJSON() throws JSONException {
-        JSONObject object = new JSONObject();
-
-        for (String key : digitData.keySet()) {
-            object.put(key, digitData.get(key).toJSON());
-        }
-
-        return object.toString();
+    public ArrayList<Integer> getDigitData(String digit, String type) {
+        ArrayList<Integer> combined = new ArrayList<>(digitDataDefault.get(digit).get(type));
+        combined.addAll(digitDataTrained.get(digit).get(type));
+        return combined;
     }
-
 }
